@@ -40,7 +40,7 @@
         </q-list>
       </q-card>
     </div>
-    <router-link to="/apps/create">
+    <router-link to="/register/aplicacao">
       <q-btn round color="primary" class="fixed" icon="create" style="right: 18px; bottom: 18px"/>
     </router-link>
   </q-layout>

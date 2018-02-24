@@ -16,11 +16,11 @@
         <q-card-separator />
         <q-card-main>
         <q-field icon="face">
-          <q-input v-model="email" float-label="Nome da aplicação" />
+          <q-input v-model="email" float-label="Nome da funcionalidade" />
         </q-field>
         <br>
         <q-field icon="textsms">
-          <q-input v-model="email" float-label="Descrição da aplicação"/>
+          <q-input v-model="email" float-label="Descrição da funcionalidade"/>
         </q-field>
         </q-card-main>
         <router-link to="permissions">

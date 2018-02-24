@@ -1,7 +1,7 @@
 <template>
     <q-layout class="q-layout-page row justify-center">
       <q-toolbar color="primary" class="toolbar-height">
-        <router-link to="permissions">
+        <router-link to="/apps">
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
         </router-link>
         <q-toolbar-title>
