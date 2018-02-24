@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="card-examples row items-start">
+  <q-layout>
     <q-card inline class="row bigger q-ma-sm text-center">
       <q-list class="q-list q-list-separator q-list-highlight">
         <q-item>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { openURL, QField, QInput, QCard, QItem, QList } from 'quasar'
+import { openURL, QField, QInput, QCard, QItem, QList, QItemTile } from 'quasar'
 
 export default {
   name: 'ListOptions',
@@ -39,7 +39,7 @@ export default {
   },
 
   components: {
-    QField, QInput, QCard, QItem, QList
+    QField, QInput, QCard, QItem, QList, QItemTile
   },
   methods: {
     openURL
