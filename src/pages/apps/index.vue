@@ -1,57 +1,65 @@
 <template>
-    <q-layout class="q-layout-page row justify-center text-center layout-padding">
-    <div class="options">
-      <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>
+  <q-layout class="q-layout-page row justify-center">
+    <q-toolbar color="primary" class="toolbar-height">
+      <q-toolbar-title><strong>{{ title }}</strong></q-toolbar-title>
+      <router-link to="/">
+        <q-btn flat round dense icon="power_settings_new" color="white" />
+      </router-link>
+    </q-toolbar>
+    <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
           <router-link to="permissions">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>APLICAÇÕES</q-item-tile>
+                <q-item-tile label>CASHLINK</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
           <router-link to="permissions">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>FUNCIONALIDADES</q-item-tile>
+                <q-item-tile label>INDÚSTRA</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
           <router-link to="permissions">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>PERFIS</q-item-tile>
+                <q-item-tile label>SOU24H</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
           <router-link to="permissions">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>USUÁRIOS</q-item-tile>
+                <q-item-tile label>TOBIAS</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
         </q-list>
       </q-card>
     </div>
+    <router-link to="/apps/create">
+      <q-btn round color="primary" class="fixed" icon="create" style="right: 18px; bottom: 18px"/>
+    </router-link>
   </q-layout>
 </template>
 
 <script>
-import { openURL, QField, QInput, QCard, QItem, QList, QItemTile } from 'quasar'
+import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
   name: 'Options',
   data () {
     return {
       leftDrawerOpen: false,
-      title: 'O QUE DESEJA ADMINISTRAR?'
+      title: 'APLICAÇÕES'
     }
   },
 
   components: {
-    QField, QInput, QCard, QItem, QList, QItemTile
+    QField, QInput, QCard, QItem, QList, QItemTile, QToolbar
   },
   methods: {
     openURL
