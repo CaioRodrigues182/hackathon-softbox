@@ -19,7 +19,7 @@
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="/profiles/ID">
+          <router-link to="/apps/perfil">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>PERFIS</q-item-tile>

@@ -1,11 +1,11 @@
 
 export default [
   {path: '/', component: () => import('layouts/default')},
-
   { path: '/apps', component: () => import('pages/apps/index') },
   { path: '/apps/create', component: () => import('pages/apps/create') },
   { path: '/apps/edit', component: () => import('pages/apps/edit') },
   { path: '/apps/ID', component: () => import('pages/apps/detail') },
+  { path: '/apps/perfil', component: () => import('pages/listaPermissoes') },
 
   { path: '/features', component: () => import('pages/features/index') },
   { path: '/features/create', component: () => import('pages/features/create') },
