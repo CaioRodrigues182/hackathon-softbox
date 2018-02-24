@@ -4,26 +4,34 @@
       <div class="full-width title padding-v-30"><strong>{{title}}</strong></div>
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <q-item class="padding-v-30 cursor-pointer">
-            <q-item-main class="text-center">
-              <q-item-tile label>APLICAÇÕES</q-item-tile>
-            </q-item-main>
-          </q-item>
-          <q-item class="padding-v-30 cursor-pointer">
-            <q-item-main class="text-center">
-              <q-item-tile label>FUNCIONALIDADES</q-item-tile>
-            </q-item-main>
-          </q-item>
-          <q-item class="padding-v-30 cursor-pointer">
-            <q-item-main class="text-center">
-              <q-item-tile label>PERFIS</q-item-tile>
-            </q-item-main>
-          </q-item>
-          <q-item class="padding-v-30 cursor-pointer">
-            <q-item-main class="text-center">
-              <q-item-tile label>USUÁRIOS</q-item-tile>
-            </q-item-main>
-          </q-item>
+          <router-link to="permissions">
+            <q-item class="padding-v-30 cursor-pointer">
+              <q-item-main class="text-center">
+                <q-item-tile label>APLICAÇÕES</q-item-tile>
+              </q-item-main>
+            </q-item>
+          </router-link>
+          <router-link to="permissions">
+            <q-item class="padding-v-30 cursor-pointer">
+              <q-item-main class="text-center">
+                <q-item-tile label>FUNCIONALIDADES</q-item-tile>
+              </q-item-main>
+            </q-item>
+          </router-link>
+          <router-link to="permissions">
+            <q-item class="padding-v-30 cursor-pointer">
+              <q-item-main class="text-center">
+                <q-item-tile label>PERFIS</q-item-tile>
+              </q-item-main>
+            </q-item>
+          </router-link>
+          <router-link to="permissions">
+            <q-item class="padding-v-30 cursor-pointer">
+              <q-item-main class="text-center">
+                <q-item-tile label>USUÁRIOS</q-item-tile>
+              </q-item-main>
+            </q-item>
+          </router-link>
         </q-list>
       </q-card>
     </div>
@@ -31,7 +39,7 @@
 </template>
 
 <script>
-import { openURL, QField, QInput, QCard, QItem, QList } from 'quasar'
+import { openURL, QField, QInput, QCard, QItem, QList, QItemTile } from 'quasar'
 
 export default {
   name: 'Options',
@@ -43,7 +51,7 @@ export default {
   },
 
   components: {
-    QField, QInput, QCard, QItem, QList
+    QField, QInput, QCard, QItem, QList, QItemTile
   },
   methods: {
     openURL

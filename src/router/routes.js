@@ -8,10 +8,24 @@ export default [
     ]
   },
   {
-    path: '/',
+    path: '/options',
     component: () => import('pages/options'),
     children: [
       { path: '/options', component: () => import('pages/options') }
+    ]
+  },
+  {
+    path: '/permissions',
+    component: () => import('pages/listaPermissoes'),
+    children: [
+      { path: '/permissions', component: () => import('pages/listaPermissoes') }
+    ]
+  },
+  {
+    path: '/register',
+    component: () => import('pages/cadastroPerfil'),
+    children: [
+      { path: '/register', component: () => import('pages/cadastroPerfil') }
     ]
   },
 
