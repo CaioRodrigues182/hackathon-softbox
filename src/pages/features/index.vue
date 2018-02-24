@@ -16,21 +16,21 @@
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="apps/ID">
+          <router-link to="/apps/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>INDÚSTRA</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="apps/ID">
+          <router-link to="/apps/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>SOU24H</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="apps/ID">
+          <router-link to="/apps/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>TOBIAS</q-item-tile>
@@ -41,7 +41,7 @@
       </q-card>
     </div>
     <router-link to="/apps/create">
-      <q-btn round color="primary" class="fixed" icon="create" style="right: 18px; bottom: 18px"/>
+      <q-btn round color="primary" class="fixed" icon="add" style="right: 18px; bottom: 18px"/>
     </router-link>
   </q-layout>
 </template>
@@ -54,7 +54,7 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      title: 'APLICAÇÕES'
+      title: 'FUNCIONALIDADES'
     }
   },
 

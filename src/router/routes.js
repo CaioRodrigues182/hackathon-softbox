@@ -1,20 +1,28 @@
 
 export default [
   {path: '/', component: () => import('layouts/default')},
+  { path: '/apps', component: () => import('pages/apps/index') },
+  { path: '/apps/create', component: () => import('pages/apps/create') },
+  { path: '/apps/edit', component: () => import('pages/apps/edit') },
+  { path: '/apps/ID', component: () => import('pages/apps/detail') },
+  { path: '/apps/perfil', component: () => import('pages/listaPermissoes') },
+  { path: '/apps/register/perfil', component: () => import('pages/cadastroPerfil') },
 
-  {
-    path: '/apps',
-    component: () => import('pages/apps/index'),
-    children: [
-      { path: 'create', component: () => import('pages/apps/create') },
-      { path: 'edit', component: () => import('pages/apps/edit') }
-    ]
-  },
+  { path: '/features', component: () => import('pages/features/index') },
+  // { path: '/features/create', component: () => import('pages/features/create') },
+  // { path: '/features/edit', component: () => import('pages/features/edit') },
+  // { path: '/features/ID', component: () => import('pages/features/detail') },
 
-  {path: '/permissions', component: () => import('pages/listaPermissoes')},
-  {path: '/register/perfil', component: () => import('pages/cadastroPerfil')},
-  {path: '/register/aplicacao', component: () => import('pages/apps/create')},
-  {path: '/register/funcionalidade', component: () => import('pages/apps/createFunc')},
+  // {
+  //   path: '/apps',
+  //   component: () => import('pages/apps/index'),
+  //   children: [
+  //     { path: '/apps/create', component: () => import('pages/apps') },
+  //     { path: 'edit', component: () => import('pages/apps/edit') },
+  //     { path: 'ID', component: () => import('pages/apps/detail') }
+  //   ]
+  // },
+
   { // Always leave this as last one
     path: '*',
     component: () => import('pages/404')

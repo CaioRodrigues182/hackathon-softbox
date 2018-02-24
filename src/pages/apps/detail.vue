@@ -1,6 +1,9 @@
 <template>
   <q-layout class="q-layout-page row justify-center">
     <q-toolbar color="primary" class="toolbar-height">
+        <router-link to="/apps">
+            <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
+        </router-link>
       <q-toolbar-title><strong>{{ title }}</strong></q-toolbar-title>
       <router-link to="/">
         <q-btn flat round dense icon="power_settings_new" color="white" />
@@ -16,7 +19,7 @@
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="/profiles/ID">
+          <router-link to="/apps/perfil">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>PERFIS</q-item-tile>
