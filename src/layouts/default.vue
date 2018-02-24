@@ -16,7 +16,7 @@
             <q-input v-model="email" float-label="Senha" type="email" suffix="" />
           </q-field>
           </q-card-main>
-          <router-link to="options">
+          <router-link to="apps">
             <q-btn color="primary" size="lg" label="ENTRAR" class="q-btn full-width bg-primary text-white button" />
           </router-link>
         </q-card>

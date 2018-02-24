@@ -1,10 +1,10 @@
 <template>
   <q-layout class="q-layout-page row justify-center">
     <q-toolbar color="primary" class="toolbar-height">
-        <router-link to="/apps">
-            <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
-        </router-link>
-      <q-toolbar-title><strong>{{ title }}</strong></q-toolbar-title>
+      <router-link to="/apps">
+          <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
+      </router-link>
+      <q-toolbar-title><strong>APLICAÇÃO | {{ title }}</strong></q-toolbar-title>
       <router-link to="/">
         <q-btn flat round dense icon="power_settings_new" color="white" />
       </router-link>
@@ -36,9 +36,6 @@
         </q-list>
       </q-card>
     </div>
-    <router-link to="/apps/create">
-      <q-btn round color="primary" class="fixed" icon="add" style="right: 18px; bottom: 18px"/>
-    </router-link>
   </q-layout>
 </template>
 
@@ -46,7 +43,7 @@
 import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: 'detail',
+  name: '',
   data () {
     return {
       leftDrawerOpen: false,
