@@ -9,31 +9,24 @@
     <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <router-link to="/apps/ID">
+          <router-link to="/features/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>CASHLINK</q-item-tile>
+                <q-item-tile label>FUNCIONALIDADES</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="/apps/ID">
+          <router-link to="/profiles/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>INDÚSTRA</q-item-tile>
+                <q-item-tile label>PERFIS</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="/apps/ID">
+          <router-link to="/users/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>SOU24H</q-item-tile>
-              </q-item-main>
-            </q-item>
-          </router-link>
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-30 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>TOBIAS</q-item-tile>
+                <q-item-tile label>USUÁRIOS</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
@@ -50,11 +43,11 @@
 import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: '',
+  name: 'detail',
   data () {
     return {
       leftDrawerOpen: false,
-      title: 'APLICAÇÕES'
+      title: 'CASHLINK'
     }
   },
 
