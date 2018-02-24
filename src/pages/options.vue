@@ -1,29 +1,32 @@
 <template>
-  <q-layout view="card-examples row items-start">
-    <q-card inline class="row bigger q-ma-sm text-center">
-      <q-list class="q-list q-list-separator q-list-highlight">
-        <q-item>
-          <q-item-main>
-            <q-item-tile label>APLICAÇÕES</q-item-tile>
-          </q-item-main>
-        </q-item>
-        <q-item>
-          <q-item-main>
-            <q-item-tile label>FUNCIONALIDADES</q-item-tile>
-          </q-item-main>
-        </q-item>
-        <q-item>
-          <q-item-main>
-            <q-item-tile label>PERFIS</q-item-tile>
-          </q-item-main>
-        </q-item>
-        <q-item>
-          <q-item-main>
-            <q-item-tile label>USUÁRIOS</q-item-tile>
-          </q-item-main>
-        </q-item>
-      </q-list>
-    </q-card>
+    <q-layout class="q-layout-page row justify-center text-center layout-padding">
+    <div class="options">
+      <div class="full-width title padding-v-30"><strong>{{title}}</strong></div>
+      <q-card inline class="content row bigger q-ma-sm text-center">
+        <q-list class="q-list q-list-separator q-list-highlight">
+          <q-item class="padding-v-30 cursor-pointer">
+            <q-item-main class="text-center">
+              <q-item-tile label>APLICAÇÕES</q-item-tile>
+            </q-item-main>
+          </q-item>
+          <q-item class="padding-v-30 cursor-pointer">
+            <q-item-main class="text-center">
+              <q-item-tile label>FUNCIONALIDADES</q-item-tile>
+            </q-item-main>
+          </q-item>
+          <q-item class="padding-v-30 cursor-pointer">
+            <q-item-main class="text-center">
+              <q-item-tile label>PERFIS</q-item-tile>
+            </q-item-main>
+          </q-item>
+          <q-item class="padding-v-30 cursor-pointer">
+            <q-item-main class="text-center">
+              <q-item-tile label>USUÁRIOS</q-item-tile>
+            </q-item-main>
+          </q-item>
+        </q-list>
+      </q-card>
+    </div>
   </q-layout>
 </template>
 
@@ -35,7 +38,7 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      email: ''
+      title: 'O QUE DESEJA ADMINISTRAR?'
     }
   },
 

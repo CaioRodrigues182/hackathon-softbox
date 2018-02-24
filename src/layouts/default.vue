@@ -1,28 +1,30 @@
 <template>
-    <q-layout view="lHh Lpr lFf">
-      <div>
-      <q-card class="card-style">
-      <q-card-title align="center">
-        <!-- <h1>{{title}}</h1> -->
-        <!-- <h4>{{subtitle}}</h4> -->
-      </q-card-title>
-        <q-card-separator />
-        <q-card-main>
-        <q-field icon="person">
-          <q-input v-model="email" float-label="Usuario" type="email" suffix="" />
-        </q-field>
-        <br>
-        <q-field icon="lock">
-          <q-input v-model="email" float-label="Senha" type="email" suffix="" />
-        </q-field>
-        </q-card-main>
-        <q-btn color="primary" size="lg" label="Login" class="full-width" />
-      </q-card>
+    <q-layout class="q-layout-page row justify-center layout-padding">
+      <div class="login">
+        <q-card class="card-style card">
+          <q-card-title align="center">
+            <div class="title"><strong>{{title}}</strong></div>
+            <div class="subtitle">{{subtitle}}</div>
+          </q-card-title>
+          <q-card-separator />
+          <q-card-main>
+          <q-field icon="person">
+            <q-input v-model="email" float-label="Usuario" type="email" suffix="" />
+          </q-field>
+          <br>
+          <q-field icon="lock">
+            <q-input v-model="email" float-label="Senha" type="email" suffix="" />
+          </q-field>
+          </q-card-main>
+          <router-link to="options">
+            <q-btn color="primary" size="lg" label="Login" class="q-btn full-width bg-primary text-white button" />
+          </router-link>
+        </q-card>
       </div>
     </q-layout>
 </template>
 <script>
-import { openURL, QField, QInput, QCardTitle, QCard, QCardMain, QCardSeparator, QButton } from 'quasar'
+import { openURL, QField, QInput, QCardTitle, QCard, QCardMain, QCardSeparator } from 'quasar'
 
 export default {
   name: 'LayoutDefault',
@@ -40,11 +42,14 @@ export default {
     QCard,
     QCardTitle,
     QCardMain,
-    QCardSeparator,
-    QButton
+    QCardSeparator
   },
   methods: {
-    openURL
+    openURL,
+
+    goToAcess () {
+
+    }
   }
 }
 </script>
