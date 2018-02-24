@@ -15,13 +15,15 @@
           <q-input v-model="email" float-label="Senha" type="email" suffix="" />
         </q-field>
         </q-card-main>
+        <router-link to="options">
         <q-btn class="text-center" align="center" label="Login" />
+        </router-link>
       </q-card>
       </div>
     </q-layout>
 </template>
 <script>
-import { openURL, QField, QInput, QCardTitle, QCard, QCardMain, QCardSeparator, QButton } from 'quasar'
+import { openURL, QField, QInput, QCardTitle, QCard, QCardMain, QCardSeparator } from 'quasar'
 
 export default {
   name: 'LayoutDefault',
@@ -38,11 +40,14 @@ export default {
     QCard,
     QCardTitle,
     QCardMain,
-    QCardSeparator,
-    QButton
+    QCardSeparator
   },
   methods: {
-    openURL
+    openURL,
+
+    goToAcess () {
+
+    }
   }
 }
 </script>

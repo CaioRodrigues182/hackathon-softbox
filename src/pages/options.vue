@@ -29,14 +29,12 @@
 
 <script>
 import { openURL, QField, QInput, QCard, QItem, QList } from 'quasar'
-import { required, email } from 'vuelidate/lib/validators'
 
 export default {
   name: 'ListOptions',
   data () {
     return {
-      leftDrawerOpen: false,
-      email: ''
+      leftDrawerOpen: false
     }
   },
 
@@ -45,9 +43,6 @@ export default {
   },
   methods: {
     openURL
-  },
-  validations: {
-    email: { required, email }
   }
 }
 </script>
