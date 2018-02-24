@@ -1,7 +1,10 @@
 <template>
   <q-layout class="q-layout-page row justify-center">
     <q-toolbar color="primary" class="toolbar-height">
-      <q-toolbar-title><strong>{{ title }}</strong></q-toolbar-title>
+      <router-link to="/features">
+          <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
+      </router-link>
+      <q-toolbar-title><strong>{{ title }} / {{ app }}</strong></q-toolbar-title>
       <router-link to="/">
         <q-btn flat round dense icon="power_settings_new" color="white" />
       </router-link>
@@ -11,36 +14,44 @@
         <q-list class="q-list q-list-separator q-list-highlight">
           <router-link to="/apps/ID">
             <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>CRIAR OI</q-item-tile>
-              </q-item-main>
+              <q-item-main label="CRIAR OI" />
+              <q-item-side right>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" />
+              </q-item-side>
             </q-item>
           </router-link>
           <router-link to="/apps/ID">
             <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>EDITAR OI</q-item-tile>
-              </q-item-main>
+              <q-item-main label="EDITAR OI" />
+              <q-item-side right>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" />
+              </q-item-side>
             </q-item>
           </router-link>
           <router-link to="/apps/ID">
             <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>CRIAR FLUXO DE OI</q-item-tile>
-              </q-item-main>
+              <q-item-main label="CRIAR FLUXO DE OI" />
+              <q-item-side right>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" />
+              </q-item-side>
             </q-item>
           </router-link>
           <router-link to="/apps/ID">
             <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>EDITAR FLUXO DE OI</q-item-tile>
-              </q-item-main>
+              <q-item-main label="EDITAR FLUXO DE OI" />
+              <q-item-side right>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" />
+              </q-item-side>
             </q-item>
           </router-link>
         </q-list>
       </q-card>
     </div>
-    <router-link to="/apps/create">
+    <router-link to="/features/create">
       <q-btn round color="primary" class="fixed" icon="add" style="right: 18px; bottom: 18px"/>
     </router-link>
   </q-layout>
@@ -54,7 +65,8 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      title: 'FUNCIONALIDADES'
+      title: 'FUNCIONALIDADES',
+      app: 'CASHLINK'
     }
   },
 
