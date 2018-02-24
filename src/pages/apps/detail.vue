@@ -9,39 +9,32 @@
     <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <router-link to="/apps/details">
+          <router-link to="/features/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>CASHLINK</q-item-tile>
+                <q-item-tile label>FUNCIONALIDADES</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="apps/details">
+          <router-link to="/profiles/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>INDÚSTRA</q-item-tile>
+                <q-item-tile label>PERFIS</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="apps/details">
+          <router-link to="/users/ID">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>SOU24H</q-item-tile>
-              </q-item-main>
-            </q-item>
-          </router-link>
-          <router-link to="apps/details">
-            <q-item class="padding-v-30 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>TOBIAS</q-item-tile>
+                <q-item-tile label>USUÁRIOS</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
         </q-list>
       </q-card>
     </div>
-    <router-link to="/register/aplicacao">
-      <q-btn round color="primary" class="fixed" icon="create" style="right: 18px; bottom: 18px"/>
+    <router-link to="/apps/create">
+      <q-btn round color="primary" class="fixed" icon="add" style="right: 18px; bottom: 18px"/>
     </router-link>
   </q-layout>
 </template>
@@ -50,11 +43,11 @@
 import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: '',
+  name: 'detail',
   data () {
     return {
       leftDrawerOpen: false,
-      title: 'APLICAÇÕES'
+      title: 'CASHLINK'
     }
   },
 
