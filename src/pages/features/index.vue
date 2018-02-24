@@ -50,7 +50,7 @@
 import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: '',
+  name: 'features.index',
   data () {
     return {
       leftDrawerOpen: false,
