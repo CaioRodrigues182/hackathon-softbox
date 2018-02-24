@@ -96,7 +96,7 @@
           </q-item>
         </q-list>
       </q-card>
-      <router-link to="register/perfil">
+      <router-link to="/users/create">
       <q-btn
         round
         color="primary"

@@ -6,7 +6,6 @@ export default [
   { path: '/apps/edit', component: () => import('pages/apps/edit') },
   { path: '/apps/ID', component: () => import('pages/apps/detail') },
   { path: '/apps/perfil', component: () => import('pages/listaPermissoes') },
-  { path: '/apps/register/perfil', component: () => import('pages/cadastroPerfil') },
 
   { path: '/features', component: () => import('pages/features/index') },
   { path: '/features/create', component: () => import('pages/features/create') },
