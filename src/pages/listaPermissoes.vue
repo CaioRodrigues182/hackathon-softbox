@@ -85,11 +85,19 @@
         </q-item>
       </q-list>
     </q-card>
+    <router-link to="register">
+    <q-btn
+      round
+      color="primary"
+      class="fixed"
+      icon="create"
+      style="right: 18px; bottom: 18px"/>
+    </router-link>
   </q-layout>
 </template>
 
 <script>
-import { openURL, QField, QInput, QCard, QItem, QList, QPopover, QToggle } from 'quasar'
+import { openURL, QField, QInput, QCard, QItem, QList, QPopover, QToggle, QBtn } from 'quasar'
 
 export default {
   name: 'ListOptions',
@@ -101,7 +109,7 @@ export default {
   },
 
   components: {
-    QField, QInput, QCard, QItem, QList, QPopover, QToggle
+    QField, QInput, QCard, QItem, QList, QPopover, QToggle, QBtn
   },
   methods: {
     openURL
