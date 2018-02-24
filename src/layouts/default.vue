@@ -1,6 +1,6 @@
 <template>
     <q-layout class="q-layout-page row justify-center layout-padding">
-      <div class="login">
+      <div class="form">
         <q-card class="card-style card">
           <q-card-title align="center">
             <div class="title"><strong>{{title}}</strong></div>
@@ -17,7 +17,7 @@
           </q-field>
           </q-card-main>
           <router-link to="options">
-            <q-btn color="primary" size="lg" label="Login" class="q-btn full-width bg-primary text-white button" />
+            <q-btn color="primary" size="lg" label="ENTRAR" class="q-btn full-width bg-primary text-white button" />
           </router-link>
         </q-card>
       </div>

@@ -1,7 +1,7 @@
 <template>
     <q-layout class="q-layout-page row justify-center text-center layout-padding">
     <div class="options">
-      <div class="full-width title padding-v-30"><strong>{{title}}</strong></div>
+      <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
           <router-link to="permissions">
