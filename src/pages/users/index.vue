@@ -1,99 +1,54 @@
 <template>
     <q-layout class="q-layout-page row justify-center">
-      <q-toolbar color="primary" class="toolbar-height">
-        <router-link to="/apps">
+    <q-toolbar color="primary" class="toolbar-height">
+      <router-link to="/apps/ID">
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
-        </router-link>
-        <q-toolbar-title>VOLTAR</q-toolbar-title>
-        <router-link to="/">
-          <q-btn flat round dense icon="power_settings_new" color="white" />
-        </router-link>
-      </q-toolbar>
+      </router-link>
+      <q-toolbar-title><strong>{{ app }} | {{ title }}</strong></q-toolbar-title>
+      <router-link to="/">
+        <q-btn flat round dense icon="power_settings_new" color="white" />
+      </router-link>
+    </q-toolbar>
     <div class="options">
       <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <q-item>
-            <q-item-main label="Administrador" />
-            <q-item-side right>
-              <q-btn flat round dense icon="more_vert" text-color="black">
-                <q-popover>
-                  <q-list link>
-                    <q-item>
-                      <q-item-main label="Editar" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Visualizar" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Inserir" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Exlcuir" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                  </q-list>
-                </q-popover>
-              </q-btn>
-            </q-item-side>
-          </q-item>
-          <q-item>
-            <q-item-main label="Gerente" />
-            <q-item-side right>
-              <q-btn flat round dense icon="more_vert" text-color="black">
-                <q-popover>
-                  <q-list link>
-                    <q-item>
-                      <q-item-main label="Editar" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Visualizar" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Inserir" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Exlcuir" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                  </q-list>
-                </q-popover>
-              </q-btn>
-            </q-item-side>
-          </q-item>
-          <q-item>
-            <q-item-main label="Cliente" />
-            <q-item-side right>
-              <q-btn flat round dense icon="more_vert" text-color="black">
-                <q-popover>
-                  <q-list link>
-                    <q-item>
-                      <q-item-main label="Editar" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Visualizar" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Inserir" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                    <q-item>
-                      <q-item-main label="Exlcuir" />&nbsp;
-                      <q-toggle v-model="checked" />
-                    </q-item>
-                  </q-list>
-                </q-popover>
-              </q-btn>
-            </q-item-side>
-          </q-item>
+          <router-link to="/apps/ID">
+            <q-item class="padding-v-15 cursor-pointer">
+              <q-item-main label="Caio" />
+              <q-item-side right>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" />
+              </q-item-side>
+            </q-item>
+          </router-link>
+          <router-link to="/apps/ID">
+            <q-item class="padding-v-15 cursor-pointer">
+              <q-item-main label="Felipe" />
+              <q-item-side right>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" />
+              </q-item-side>
+            </q-item>
+          </router-link>
+          <router-link to="/apps/ID">
+            <q-item class="padding-v-15 cursor-pointer">
+              <q-item-main label="Stanley" />
+              <q-item-side right>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" />
+              </q-item-side>
+            </q-item>
+          </router-link>
+          <router-link to="/apps/ID">
+            <q-item class="padding-v-15 cursor-pointer">
+              <q-item-main label="Vinícius" />
+              <q-item-side right>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" />
+              </q-item-side>
+            </q-item>
+          </router-link>
         </q-list>
       </q-card>
       <router-link to="/users/create">
@@ -117,7 +72,8 @@ export default {
     return {
       leftDrawerOpen: false,
       checked: true,
-      title: 'LISTA DE PERFIS'
+      title: 'USUÁRIOS',
+      app: 'CASHLINK'
     }
   },
 
