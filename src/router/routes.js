@@ -10,7 +10,7 @@ export default [
   },
   { // Always leave this as last one
     path: '/options',
-    component: () => import('pages/options')
+    component: (Options) => import('pages/options')
   },
 
   { // Always leave this as last one

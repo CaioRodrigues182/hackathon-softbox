@@ -3,7 +3,8 @@
       <div>
       <q-card class="card-style">
       <q-card-title align="center">
-        {{title}}
+        <!-- <h1>{{title}}</h1> -->
+        <!-- <h4>{{subtitle}}</h4> -->
       </q-card-title>
         <q-card-separator />
         <q-card-main>
@@ -15,7 +16,7 @@
           <q-input v-model="email" float-label="Senha" type="email" suffix="" />
         </q-field>
         </q-card-main>
-        <q-btn class="text-center" align="center" label="Login" />
+        <q-btn color="primary" size="lg" label="Login" class="full-width" />
       </q-card>
       </div>
     </q-layout>
@@ -28,7 +29,8 @@ export default {
   data () {
     return {
       email: '',
-      title: 'Login'
+      title: 'EFETUE O LOGIN',
+      subtitle: 'PARA ACESSAR O SISTEMA'
     }
   },
 
