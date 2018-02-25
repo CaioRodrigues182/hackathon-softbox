@@ -16,15 +16,11 @@
         <q-card-separator />
         <q-card-main>
         <q-field icon="face">
-          <q-input v-model="email" float-label="Nome" />
-        </q-field>
-        <br>
-        <q-field icon="textsms">
-          <q-input v-model="email" float-label="Descrição"/>
+          <q-input v-model="name" float-label="Nome" />
         </q-field>
         </q-card-main>
-        <router-link to="permissions">
-          <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" />
+        <router-link :to="back">
+          <q-btn color="primary" size="lg" label="CADASTRAR" @click="create()" class="q-btn full-width bg-primary text-white button" />
         </router-link>
       </q-card>
       </div>
@@ -38,7 +34,8 @@ export default {
   name: 'LayoutDefault',
   data () {
     return {
-      email: '',
+      name: '',
+      back: '/users/ID',
       title: 'Cadastro de Usuario'
     }
   },
@@ -55,8 +52,18 @@ export default {
   methods: {
     openURL,
 
-    goToAcess () {
-
+    create () {
+      if (this.name && this.name !== '') {
+        this.users = JSON.parse(window.localStorage.getItem('users'))
+        if (!this.users) {
+          this.users = []
+        }
+        this.item = {id: this.users.length + 1, name: this.name}
+        this.users.push(this.item)
+        console.log(this.users)
+        window.localStorage.setItem('users', JSON.stringify(this.users))
+        window.location.href = this.back
+      }
     }
   }
 }

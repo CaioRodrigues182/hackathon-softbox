@@ -1,7 +1,7 @@
 <template>
     <q-layout class="q-layout-page row justify-center">
       <q-toolbar color="primary" class="toolbar-height">
-        <router-link to="/profiles/ID">
+        <router-link :to="back">
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
         </router-link>
         <q-toolbar-title>
@@ -36,10 +36,9 @@ export default {
     return {
       name: '',
       title: 'Cadastro de Perfil',
-      back: '/profiles/ID'
+      back: '/profiles/' + JSON.parse(window.localStorage.getItem('appDefault')).id
     }
   },
-
   components: {
     QField,
     QInput,
@@ -51,13 +50,13 @@ export default {
   },
   methods: {
     openURL,
-
     create () {
-      debugger
       this.profiles = JSON.parse(window.localStorage.getItem('profiles'))
-      this.item = {id: this.profiles.length + 1, name: this.name}
+      if (!this.profiles) {
+        this.profiles = []
+      }
+      this.item = {id: this.profiles.length + 1, name: this.name, app: JSON.parse(window.localStorage.getItem('appDefault')).id}
       this.profiles.push(this.item)
-      console.log(this.profiles)
       window.localStorage.setItem('profiles', JSON.stringify(this.profiles))
       window.location.href = this.back
     }

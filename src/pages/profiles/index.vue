@@ -4,7 +4,7 @@
       <router-link to="/apps/ID">
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
       </router-link>
-      <q-toolbar-title><strong>{{ app }} | {{ title }}</strong></q-toolbar-title>
+      <q-toolbar-title><strong>FUNCIONALIDADES | {{ title }}</strong></q-toolbar-title>
     </q-toolbar>
 
    <q-modal v-model="permisoesModal" :content-css="{padding: '50px', minWidth: '50vw'}">
@@ -12,7 +12,7 @@
         <q-card>
           <q-card-main>
             <q-list class="q-list q-list-separator q-list-highlight">
-              <q-item v-for="item in itens" v-bind:key="item.id" class="padding-v-15 cursor-pointer">
+              <q-item v-for="item in items" v-bind:key="item.id" class="padding-v-15 cursor-pointer">
                 <q-item-main>
                   <q-item-tile>{{item.name}}</q-item-tile>
                 </q-item-main>
@@ -68,18 +68,12 @@ export default {
     return {
       checked: true,
       title: 'PERFIS',
-      items: JSON.parse(window.localStorage.getItem('profiles')),
+      items: [],
       app: 'CASHLINK',
       opened: false,
       idToDelete: -1,
       permisoesModal: null,
-      excluirModal: null,
-      itens: [
-        {id: 1, name: 'Visualizar', checked: false},
-        {id: 2, name: 'Editar', checked: true},
-        {id: 3, name: 'Salvar', checked: false},
-        {id: 4, name: 'Excluir', checked: true}
-      ]
+      excluirModal: null
     }
   },
 
@@ -91,7 +85,6 @@ export default {
 
     remove (id) {
       this.profiles = JSON.parse(window.localStorage.getItem('profiles'))
-      // this.apps.splice(id, 1)
       for (let i = 0; i < this.profiles.length; i++) {
         if (this.profiles[i].id === id) {
           this.profiles.splice(i, 1)
@@ -108,6 +101,18 @@ export default {
     openModalExclusao (id) {
       this.idToDelete = id
       this.excluirModal = ''
+    }
+  },
+  beforeMount () {
+    let app = JSON.parse(window.localStorage.getItem('appDefault'))
+    let profiles = JSON.parse(window.localStorage.getItem('profiles'))
+    if (!profiles) {
+      profiles = []
+    }
+    for (let i = 0; i < profiles.length; i++) {
+      if (parseInt(profiles[i].app) === parseInt(app.id)) {
+        this.items.push(profiles[i])
+      }
     }
   }
 }

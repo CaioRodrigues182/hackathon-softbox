@@ -16,14 +16,14 @@
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link :to="'/features/' + id">
+          <router-link :to="'/profiles/' + id">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>PERFIS</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link :to="'/features/' + id">
+          <router-link :to="'/users/' + id">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>USUÁRIOS</q-item-tile>
@@ -43,8 +43,8 @@ export default {
   name: 'appsdetail',
   data () {
     return {
-      title: '',
-      id: 0
+      title: JSON.parse(window.localStorage.getItem('appDefault')).name,
+      id: JSON.parse(window.localStorage.getItem('appDefault')).id
     }
   },
 
@@ -53,15 +53,6 @@ export default {
   },
   methods: {
     openURL
-  },
-  beforeMount () {
-    this.id = this.$route.params.id
-    this.apps = JSON.parse(window.localStorage.getItem('apps'))
-    for (let i = 0; i < this.apps.length; i++) {
-      if (this.apps[i].id === this.id) {
-        this.title = this.apps[i].name
-      }
-    }
   }
 }
 </script>

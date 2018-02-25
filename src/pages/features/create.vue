@@ -16,15 +16,11 @@
         <q-card-separator />
         <q-card-main>
         <q-field icon="face">
-          <q-input v-model="email" float-label="Nome da funcionalidade" />
-        </q-field>
-        <br>
-        <q-field icon="textsms">
-          <q-input v-model="email" float-label="Descrição da funcionalidade"/>
+          <q-input v-model="name" float-label="Nome" autofocus="autofocus" />
         </q-field>
         </q-card-main>
-        <router-link to="permissions">
-          <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" />
+        <router-link :to="back">
+          <q-btn color="primary" size="lg" label="CADASTRAR" @click="create()" class="q-btn full-width bg-primary text-white button" />
         </router-link>
       </q-card>
       </div>
@@ -38,8 +34,9 @@ export default {
   name: 'LayoutDefault',
   data () {
     return {
-      email: '',
-      title: 'Cadastro de Funcionalidades'
+      name: '',
+      back: '/features/' + JSON.parse(window.localStorage.getItem('appDefault')).id,
+      title: 'Cadastrar Funcionalidade'
     }
   },
 
@@ -55,8 +52,17 @@ export default {
   methods: {
     openURL,
 
-    goToAcess () {
-
+    create () {
+      if (this.name && this.name !== '') {
+        this.funcionalidades = JSON.parse(window.localStorage.getItem('funcionalidades'))
+        if (!this.funcionalidades) {
+          this.funcionalidades = []
+        }
+        this.item = {id: this.funcionalidades.length + 1, name: this.name, app: JSON.parse(window.localStorage.getItem('appDefault')).id}
+        this.funcionalidades.push(this.item)
+        window.localStorage.setItem('funcionalidades', JSON.stringify(this.funcionalidades))
+        window.location.href = this.back
+      }
     }
   }
 }

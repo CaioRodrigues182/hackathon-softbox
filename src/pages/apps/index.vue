@@ -12,9 +12,7 @@
             <q-item class="padding-v-15 cursor-pointer" v-for="item in items" v-bind:key="item.id">
               <q-item-main :label="item.name" />
               <q-item-side right>
-                <router-link :to="'/apps/' + item.id">
-                  <q-btn flat round dense icon="view_stream" text-color="black" />
-                </router-link>
+                <q-btn flat round dense icon="view_stream" text-color="black" @click="setAppDefault(item.id)" />
                 <q-btn flat round dense icon="create" text-color="black" />
                 <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao(item.id)" />
               </q-item-side>
@@ -46,6 +44,7 @@ export default {
   data () {
     return {
       back: '/',
+      go: '/apps/',
       excluirModal: null,
       title: 'APLICAÇÕES',
       items: JSON.parse(window.localStorage.getItem('apps')),
@@ -73,6 +72,16 @@ export default {
     openModalExclusao (id) {
       this.idToDelete = id
       this.excluirModal = ''
+    },
+    setAppDefault (id) {
+      id = parseInt(id)
+      this.apps = JSON.parse(window.localStorage.getItem('apps'))
+      for (let i = 0; i < this.apps.length; i++) {
+        if (this.apps[i].id === id) {
+          window.localStorage.setItem('appDefault', JSON.stringify({id: this.apps[i].id, name: this.apps[i].name}))
+        }
+      }
+      window.location.href = this.go + id
     }
   }
 }
