@@ -19,7 +19,9 @@
           <q-input v-model="name" float-label="Nome" autofocus="autofocus" />
         </q-field>
         </q-card-main>
-        <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" @click="create()" />
+        <router-link :to="back">
+          <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" @click="create()" />
+        </router-link>
       </q-card>
       </div>
     </q-layout>
@@ -63,7 +65,7 @@ export default {
         this.apps.push(this.item)
         console.log(this.apps)
         window.localStorage.setItem('apps', JSON.stringify(this.apps))
-        window.location.href = this.back
+        // window.location.href = this.back
       }
     }
   }

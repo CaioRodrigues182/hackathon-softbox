@@ -81,7 +81,7 @@ export default {
           window.localStorage.setItem('appDefault', JSON.stringify({id: this.apps[i].id, name: this.apps[i].name}))
         }
       }
-      window.location.href = this.go + id
+      // window.location.href = this.go + id
     }
   }
 }
