@@ -16,7 +16,7 @@
                   <q-btn flat round dense icon="view_stream" text-color="black" />
                 </router-link>
                 <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" @click="remove(item.id)" />
+                <q-btn flat round dense icon="delete" text-color="black" @click="remove($index)" />
               </q-item-side>
             </q-item>
         </q-list>
@@ -50,16 +50,14 @@ export default {
     openURL,
     remove (id) {
       this.apps = JSON.parse(window.localStorage.getItem('apps'))
-      console.log(this.apps)
-      for (let i = 0; i < this.apps.length; i++) {
-        if (this.apps[i].id === id) {
-          this.apps.splice(i, 1)
-        }
-      }
-      console.log('---')
-      console.log(this.apps)
+      this.apps.splice(id, 1)
+      // for (let i = 0; i < this.apps.length; i++) {
+      //   if (this.apps[i].id === id) {
+      //     this.apps.splice(i, 1)
+      //   }
+      // }
       window.localStorage.setItem('apps', JSON.stringify(this.apps))
-      // window.location.href = this.back
+      this.items = this.apps
     }
   }
 }
