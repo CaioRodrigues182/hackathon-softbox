@@ -65,10 +65,6 @@ export default {
         window.localStorage.setItem('apps', JSON.stringify(this.apps))
         window.location.href = this.back
       }
-    },
-
-    goToAcess () {
-
     }
   }
 }

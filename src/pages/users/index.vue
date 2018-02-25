@@ -10,20 +10,20 @@
       <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-            <q-item v-for="user in users" v-bind:key="user.id" class="padding-v-15 cursor-pointer">
+            <q-item v-for="user in items" v-bind:key="user.id" class="padding-v-15 cursor-pointer">
               <q-item-main>
                  <q-item-tile>{{user.name}}</q-item-tile>
               </q-item-main>
               <q-item-side right>
                 <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao()"/>
+                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao(user.id)"/>
               </q-item-side>
             </q-item>
         </q-list>
       </q-card>
       <q-modal v-model="excluirModal" :content-css="{padding: '50px', minWidth: '50vw'}">
       <div class="q-display-1 q-mb-md">Você deseja realmente excluir esse perfil?</div>
-      <q-btn color="green" @click="excluirModal = false" wait-for-ripple label="Confirmar" />
+      <q-btn color="green" @click="remove(idToDelete)" wait-for-ripple label="Confirmar" />
       <q-btn color="red" @click="excluirModal = false" wait-for-ripple label="Cancelar" />
     </q-modal>
       <router-link to="/users/create">
@@ -47,15 +47,11 @@ export default {
     return {
       leftDrawerOpen: false,
       checked: true,
+      items: JSON.parse(window.localStorage.getItem('users')),
       excluirModal: null,
+      idToDelete: -1,
       title: 'USUÁRIOS',
-      app: 'CASHLINK',
-      users: [
-        {id: 1, name: 'Caio'},
-        {id: 2, name: 'Stanley'},
-        {id: 3, name: 'Vinicius'},
-        {id: 4, name: 'Felipe'}
-      ]
+      app: 'CASHLINK'
     }
   },
 
@@ -65,7 +61,20 @@ export default {
   methods: {
     openURL,
 
-    openModalExclusao () {
+    remove (id) {
+      this.users = JSON.parse(window.localStorage.getItem('users'))
+      for (let i = 0; i < this.users.length; i++) {
+        if (this.users[i].id === id) {
+          this.users.splice(i, 1)
+        }
+      }
+      window.localStorage.setItem('users', JSON.stringify(this.users))
+      this.items = this.users
+      this.excluirModal = false
+    },
+
+    openModalExclusao (id) {
+      this.idToDelete = id
       this.excluirModal = ''
     }
   }

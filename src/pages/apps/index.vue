@@ -20,7 +20,7 @@
               </q-item-side>
             </q-item>
 
-            <q-item class="padding-v-15 cursor-pointer" v-if="!items.length">
+            <q-item class="padding-v-15 cursor-pointer" v-if="!items || !items.length">
               <q-item-main label="Sem dados cadastrados" />
             </q-item>
 

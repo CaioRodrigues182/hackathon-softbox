@@ -9,20 +9,20 @@
     <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-            <q-item v-for="func in funcs" v-bind:key="func" class="padding-v-15 cursor-pointer">
+            <q-item v-for="func in items" v-bind:key="func.id" class="padding-v-15 cursor-pointer">
                <q-item-main>
                  <q-item-tile>{{func.name}}</q-item-tile>
               </q-item-main>
               <q-item-side right>
                 <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao()" />
+                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao(func.id)" />
               </q-item-side>
             </q-item>
         </q-list>
       </q-card>
       <q-modal v-model="excluirModal" :content-css="{padding: '50px', minWidth: '50vw'}">
       <div class="q-display-1 q-mb-md">Você deseja realmente excluir esse perfil?</div>
-      <q-btn color="green" @click="excluirModal = false" wait-for-ripple label="Confirmar" />
+      <q-btn color="green" @click="remove(idToDelete)" wait-for-ripple label="Confirmar" />
       <q-btn color="red" @click="excluirModal = false" wait-for-ripple label="Cancelar" />
     </q-modal>
     </div>
@@ -36,19 +36,15 @@
 import { openURL, QField, QInput, QCard, QModal, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: 'features.index',
+  name: 'featuresindex',
   data () {
     return {
       leftDrawerOpen: false,
+      idToDelete: -1,
       title: 'FUNCIONALIDADES',
+      items: JSON.parse(window.localStorage.getItem('funcionalidades')),
       app: 'CASHLINK',
-      excluirModal: null,
-      funcs: [
-        {id: 1, name: 'Criar OI'},
-        {id: 2, name: 'Editar OI'},
-        {id: 3, name: 'Criar fluxo de OI'},
-        {id: 4, name: 'Editar fluxo de OI'}
-      ]
+      excluirModal: null
     }
   },
 
@@ -58,7 +54,21 @@ export default {
   methods: {
     openURL,
 
-    openModalExclusao () {
+    remove (id) {
+      this.funcionalidades = JSON.parse(window.localStorage.getItem('funcionalidades'))
+      // this.apps.splice(id, 1)
+      for (let i = 0; i < this.funcionalidades.length; i++) {
+        if (this.funcionalidades[i].id === id) {
+          this.funcionalidades.splice(i, 1)
+        }
+      }
+      window.localStorage.setItem('funcionalidades', JSON.stringify(this.funcionalidades))
+      this.items = this.funcionalidades
+      this.excluirModal = false
+    },
+
+    openModalExclusao (id) {
+      this.idToDelete = id
       this.excluirModal = ''
     }
   }
