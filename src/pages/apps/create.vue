@@ -1,7 +1,7 @@
 <template>
     <q-layout class="q-layout-page row justify-center">
       <q-toolbar color="primary" class="toolbar-height">
-        <router-link to="/apps">
+        <router-link :to="back">
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
         </router-link>
         <q-toolbar-title>
@@ -18,11 +18,8 @@
         <q-field icon="face">
           <q-input v-model="name" float-label="Nome" />
         </q-field>
-        <q-field icon="textsms">
-          <q-input v-model="description" float-label="Descrição" />
-        </q-field>
         </q-card-main>
-        <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" />
+        <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" @click="create()" />
       </q-card>
       </div>
     </q-layout>
@@ -35,9 +32,12 @@ export default {
   name: 'LayoutDefault',
   data () {
     return {
+      back: '/apps',
       name: '',
       description: '',
-      title: 'Cadastrar Aplicação'
+      title: 'Cadastrar Aplicação',
+      apps: [],
+      item: {}
     }
   },
 
@@ -52,6 +52,15 @@ export default {
   },
   methods: {
     openURL,
+
+    create () {
+      this.apps = JSON.parse(window.localStorage.getItem('apps'))
+      this.item = {id: this.apps.length + 1, name: this.name}
+      this.apps.push(this.item)
+      console.log(this.apps)
+      window.localStorage.setItem('apps', JSON.stringify(this.apps))
+      window.location.href = this.back
+    },
 
     goToAcess () {
 

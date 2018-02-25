@@ -40,11 +40,11 @@
 import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: '',
-  data () {
+  name: 'apps.detail',
+  data ($route) {
     return {
-      leftDrawerOpen: false,
-      title: 'CASHLINK'
+      title: 'CASHLINK',
+      id: $route.params.id
     }
   },
 
