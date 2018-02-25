@@ -38,8 +38,9 @@ module.exports = function (ctx) {
       }
     },
     devServer: {
-      // https: true,
-      // port: 8080,
+      https: true,
+      port: 8080,
+      host: '172.16.252.127',
       open: true // opens browser window automatically
     },
     // framework: 'all' --- includes everything; for dev only!
@@ -73,9 +74,9 @@ module.exports = function (ctx) {
     pwa: {
       cacheExt: 'js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3',
       manifest: {
-        // name: 'Quasar App',
-        // short_name: 'Quasar-PWA',
-        // description: 'Best PWA App in town!',
+        name: 'UniversoXI',
+        short_name: 'Universo11-PWA',
+        description: 'Melhor PWA',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
