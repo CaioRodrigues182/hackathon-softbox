@@ -15,7 +15,7 @@
                  <q-item-tile>{{user.name}}</q-item-tile>
               </q-item-main>
               <q-item-side right>
-                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="create" text-color="black" @click="openModalPermissao()" />
                 <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao(user.id)"/>
               </q-item-side>
             </q-item>
@@ -26,6 +26,25 @@
       <q-btn color="green" @click="remove(idToDelete)" wait-for-ripple label="Confirmar" />
       <q-btn color="red" @click="excluirModal = false" wait-for-ripple label="Cancelar" />
     </q-modal>
+
+     <q-modal v-model="permisoesModal" :content-css="{padding: '50px', minWidth: '50vw'}">
+      <div class="q-display-1 q-mb-md">Configurar perfil para usuario
+        <q-card>
+          <q-card-main>
+            <q-list class="q-list q-list-separator q-list-highlight">
+              <q-item v-for="item in itens" v-bind:key="item.id" class="padding-v-15 cursor-pointer">
+                <q-item-main>
+                  <q-item-tile>{{item.name}}</q-item-tile>
+                </q-item-main>
+                <q-toggle v-model="item.checked"/>
+              </q-item>
+            </q-list>
+          </q-card-main>
+        </q-card>
+      </div>
+      <q-btn color="primary" @click="permisoesModal = false" wait-for-ripple label="Close" />
+    </q-modal>
+
       <router-link to="/users/create">
       <q-btn
         round
@@ -47,7 +66,9 @@ export default {
     return {
       leftDrawerOpen: false,
       checked: true,
+      permisoesModal: null,
       items: JSON.parse(window.localStorage.getItem('users')),
+      itens: JSON.parse(window.localStorage.getItem('profiles')),
       excluirModal: null,
       idToDelete: -1,
       title: 'USUÁRIOS',
@@ -72,7 +93,9 @@ export default {
       this.items = this.users
       this.excluirModal = false
     },
-
+    openModalPermissao () {
+      this.permisoesModal = ''
+    },
     openModalExclusao (id) {
       this.idToDelete = id
       this.excluirModal = ''

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { openURL, QField, QInput, QCardTitle, QCard, QCardMain, QCardSeparator, QToolbar } from 'quasar'
+import { openURL, QField, QInput, QCardTitle, QCard, QCardMain, QCardSeparator, QToolbar, QSelect } from 'quasar'
 
 export default {
   name: 'LayoutDefault',
@@ -36,8 +36,15 @@ export default {
     return {
       name: '',
       back: '/users/ID',
+      nameSelect: '',
+      select: '',
+      items: [],
       title: 'Cadastro de Usuario'
     }
+  },
+
+  beforeMount () {
+    this.items = JSON.parse(window.localStorage.getItem('profiles'))
   },
 
   components: {
@@ -47,7 +54,8 @@ export default {
     QCardTitle,
     QCardMain,
     QCardSeparator,
-    QToolbar
+    QToolbar,
+    QSelect
   },
   methods: {
     openURL,

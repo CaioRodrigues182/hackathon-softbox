@@ -69,17 +69,12 @@ export default {
       checked: true,
       title: 'PERFIS',
       items: JSON.parse(window.localStorage.getItem('profiles')),
+      itens: JSON.parse(window.localStorage.getItem('funcionalidades')),
       app: 'CASHLINK',
       opened: false,
       idToDelete: -1,
       permisoesModal: null,
-      excluirModal: null,
-      itens: [
-        {id: 1, name: 'Visualizar', checked: false},
-        {id: 2, name: 'Editar', checked: true},
-        {id: 3, name: 'Salvar', checked: false},
-        {id: 4, name: 'Excluir', checked: true}
-      ]
+      excluirModal: null
     }
   },
 
