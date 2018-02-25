@@ -16,7 +16,7 @@
         <q-card-separator />
         <q-card-main>
         <q-field icon="face">
-          <q-input v-model="name" float-label="Nome" />
+          <q-input v-model="name" float-label="Nome" autofocus="autofocus" />
         </q-field>
         </q-card-main>
         <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" @click="create()" />
@@ -54,12 +54,17 @@ export default {
     openURL,
 
     create () {
-      this.apps = JSON.parse(window.localStorage.getItem('apps'))
-      this.item = {id: this.apps.length + 1, name: this.name}
-      this.apps.push(this.item)
-      console.log(this.apps)
-      window.localStorage.setItem('apps', JSON.stringify(this.apps))
-      window.location.href = this.back
+      if (this.name && this.name !== '') {
+        this.apps = JSON.parse(window.localStorage.getItem('apps'))
+        if (!this.apps) {
+          this.apps = []
+        }
+        this.item = {id: this.apps.length + 1, name: this.name}
+        this.apps.push(this.item)
+        console.log(this.apps)
+        window.localStorage.setItem('apps', JSON.stringify(this.apps))
+        window.location.href = this.back
+      }
     },
 
     goToAcess () {

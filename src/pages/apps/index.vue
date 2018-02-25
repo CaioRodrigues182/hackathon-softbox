@@ -19,15 +19,18 @@
                 <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao(item.id)" />
               </q-item-side>
             </q-item>
+
+            <q-item class="padding-v-15 cursor-pointer" v-if="!items.length">
+              <q-item-main label="Sem dados cadastrados" />
+            </q-item>
+
         </q-list>
       </q-card>
-
       <q-modal v-model="excluirModal" :content-css="{padding: '50px', minWidth: '50vw'}">
-        <div class="q-display-1 q-mb-md">Você deseja realmente excluir esse perfil?</div>
+        <div class="q-display-1 q-mb-md">Você deseja realmente excluir essa aplicação?</div>
         <q-btn color="green"  @click="remove(idToDelete)" wait-for-ripple label="Confirmar" />
         <q-btn color="red" @click="excluirModal = false" wait-for-ripple label="Cancelar" />
       </q-modal>
-
     </div>
     <router-link to="/apps/create">
       <q-btn round color="primary" class="fixed" icon="create" style="right: 18px; bottom: 18px"/>
