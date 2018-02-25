@@ -5,9 +5,6 @@
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
       </router-link>
       <q-toolbar-title><strong>APLICAÇÃO | {{ title }}</strong></q-toolbar-title>
-      <router-link to="/">
-        <q-btn flat round dense icon="power_settings_new" color="white" />
-      </router-link>
     </q-toolbar>
     <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
@@ -43,11 +40,11 @@
 import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: '',
-  data () {
+  name: 'apps.detail',
+  data ($route) {
     return {
-      leftDrawerOpen: false,
-      title: 'CASHLINK'
+      title: 'CASHLINK',
+      id: $route.params.id
     }
   },
 

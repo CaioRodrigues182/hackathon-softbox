@@ -5,9 +5,6 @@
       <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
       </router-link>
       <q-toolbar-title><strong>{{ app }} | {{ title }}</strong></q-toolbar-title>
-      <router-link to="/">
-        <q-btn flat round dense icon="power_settings_new" color="white" />
-      </router-link>
     </q-toolbar>
     <div class="options">
       <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>

@@ -5,9 +5,6 @@
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
       </router-link>
       <q-toolbar-title><strong>{{ app }} | {{ title }}</strong></q-toolbar-title>
-      <router-link to="/">
-        <q-btn flat round dense icon="power_settings_new" color="white" />
-      </router-link>
     </q-toolbar>
 
    <q-modal v-model="permisoesModal" :content-css="{padding: '50px', minWidth: '50vw'}">
@@ -38,7 +35,7 @@
       <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-            <q-item v-for="perfil in perfis" v-bind:key="perfil" class="padding-v-15 cursor-pointer">
+            <q-item v-for="perfil in perfis" v-bind:key="perfil.id" class="padding-v-15 cursor-pointer">
               <q-item-main>
                  <q-item-tile>{{perfil.name}}</q-item-tile>
               </q-item-main>
@@ -62,7 +59,7 @@
 </template>
 
 <script>
-import { openURL, QField, QInput, QCard, QCardMain, QItem, QList, QPopover, QToggle, QBtn, QModal } from 'quasar'
+import { openURL, QField, QInput, QCard, QCardMain, QItem, QItemTile, QList, QPopover, QToggle, QBtn, QModal } from 'quasar'
 
 export default {
 
@@ -91,7 +88,7 @@ export default {
   },
 
   components: {
-    QField, QInput, QCard, QItem, QList, QPopover, QToggle, QBtn, QModal, QCardMain
+    QField, QInput, QCard, QItem, QList, QPopover, QToggle, QBtn, QModal, QCardMain, QItemTile
   },
   methods: {
     openURL,
