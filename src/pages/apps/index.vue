@@ -16,11 +16,18 @@
                   <q-btn flat round dense icon="view_stream" text-color="black" />
                 </router-link>
                 <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" @click="remove(item.id)" />
+                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao()" />
               </q-item-side>
             </q-item>
         </q-list>
       </q-card>
+
+      <q-modal v-model="excluirModal" :content-css="{padding: '50px', minWidth: '50vw'}">
+        <div class="q-display-1 q-mb-md">Você deseja realmente excluir esse perfil?</div>
+        <q-btn color="green"  @click="remove(item.id)" wait-for-ripple label="Confirmar" />
+        <q-btn color="red" @click="excluirModal = false" wait-for-ripple label="Cancelar" />
+      </q-modal>
+
     </div>
     <router-link to="/apps/create">
       <q-btn round color="primary" class="fixed" icon="create" style="right: 18px; bottom: 18px"/>
@@ -29,7 +36,7 @@
 </template>
 
 <script>
-import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
+import { openURL, QField, QInput, QCard, QItem, QModal, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
   name: 'apps.index',
@@ -37,6 +44,7 @@ export default {
     return {
       back: '/',
       leftDrawerOpen: false,
+      excluirModal: null,
       title: 'APLICAÇÕES',
       items: JSON.parse(window.localStorage.getItem('apps')),
       apps: [],
@@ -44,7 +52,7 @@ export default {
     }
   },
   components: {
-    QField, QInput, QCard, QItem, QList, QItemTile, QToolbar
+    QField, QInput, QCard, QItem, QList, QItemTile, QToolbar, QModal
   },
   methods: {
     openURL,
@@ -59,7 +67,12 @@ export default {
       console.log('---')
       console.log(this.apps)
       window.localStorage.setItem('apps', JSON.stringify(this.apps))
+      this.excluirModal = false
       // window.location.href = this.back
+    },
+
+    openModalExclusao () {
+      this.excluirModal = ''
     }
   }
 }
