@@ -51,14 +51,16 @@ export default {
   methods: {
     openURL,
     create () {
-      this.profiles = JSON.parse(window.localStorage.getItem('profiles'))
-      if (!this.profiles) {
-        this.profiles = []
+      if (this.name && this.name !== '') {
+        this.profiles = JSON.parse(window.localStorage.getItem('profiles'))
+        if (!this.profiles) {
+          this.profiles = []
+        }
+        this.item = {id: this.profiles.length + 1, name: this.name, app: JSON.parse(window.localStorage.getItem('appDefault')).id}
+        this.profiles.push(this.item)
+        window.localStorage.setItem('profiles', JSON.stringify(this.profiles))
+        // window.location.href = this.back
       }
-      this.item = {id: this.profiles.length + 1, name: this.name, app: JSON.parse(window.localStorage.getItem('appDefault')).id}
-      this.profiles.push(this.item)
-      window.localStorage.setItem('profiles', JSON.stringify(this.profiles))
-      window.location.href = this.back
     }
   }
 }

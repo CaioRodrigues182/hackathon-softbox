@@ -61,7 +61,7 @@ export default {
         this.item = {id: this.funcionalidades.length + 1, name: this.name, app: JSON.parse(window.localStorage.getItem('appDefault')).id}
         this.funcionalidades.push(this.item)
         window.localStorage.setItem('funcionalidades', JSON.stringify(this.funcionalidades))
-        window.location.href = this.back
+        // window.location.href = this.back
       }
     }
   }

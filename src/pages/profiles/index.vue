@@ -4,15 +4,15 @@
       <router-link to="/apps/ID">
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
       </router-link>
-      <q-toolbar-title><strong>FUNCIONALIDADES | {{ title }}</strong></q-toolbar-title>
+      <q-toolbar-title><strong>PERFIS | {{ title }}</strong></q-toolbar-title>
     </q-toolbar>
 
    <q-modal v-model="permisoesModal" :content-css="{padding: '50px', minWidth: '50vw'}">
-      <div class="q-display-1 q-mb-md">Configurar permissões
+      <div class="q-display-1 q-mb-md">Configurar funcionalidades
         <q-card>
           <q-card-main>
             <q-list class="q-list q-list-separator q-list-highlight">
-              <q-item v-for="item in items" v-bind:key="item.id" class="padding-v-15 cursor-pointer">
+              <q-item v-for="item in itens" v-bind:key="item.id" class="padding-v-15 cursor-pointer">
                 <q-item-main>
                   <q-item-tile>{{item.name}}</q-item-tile>
                 </q-item-main>
@@ -32,7 +32,7 @@
     </q-modal>
 
     <div class="options">
-      <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>
+      <!-- <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div> -->
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
             <q-item v-for="perfil in items" v-bind:key="perfil.id" class="padding-v-15 cursor-pointer">
@@ -67,9 +67,10 @@ export default {
   data () {
     return {
       checked: true,
-      title: 'PERFIS',
+      title: JSON.parse(window.localStorage.getItem('appDefault')).name,
+      id: JSON.parse(window.localStorage.getItem('appDefault')).id,
       items: [],
-      app: 'CASHLINK',
+      itens: [],
       opened: false,
       idToDelete: -1,
       permisoesModal: null,
@@ -112,6 +113,16 @@ export default {
     for (let i = 0; i < profiles.length; i++) {
       if (parseInt(profiles[i].app) === parseInt(app.id)) {
         this.items.push(profiles[i])
+      }
+    }
+
+    let funcionalidades = JSON.parse(window.localStorage.getItem('funcionalidades'))
+    if (!funcionalidades) {
+      funcionalidades = []
+    }
+    for (let i = 0; i < funcionalidades.length; i++) {
+      if (parseInt(funcionalidades[i].app) === parseInt(app.id)) {
+        this.itens.push(funcionalidades[i])
       }
     }
   }

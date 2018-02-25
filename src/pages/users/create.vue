@@ -1,7 +1,7 @@
 <template>
     <q-layout class="q-layout-page row justify-center">
       <q-toolbar color="primary" class="toolbar-height">
-        <router-link to="/users/ID">
+        <router-link :to="back">
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
         </router-link>
         <q-toolbar-title>
@@ -28,16 +28,23 @@
 </template>
 
 <script>
-import { openURL, QField, QInput, QCardTitle, QCard, QCardMain, QCardSeparator, QToolbar } from 'quasar'
+import { openURL, QField, QInput, QCardTitle, QCard, QCardMain, QCardSeparator, QToolbar, QSelect } from 'quasar'
 
 export default {
   name: 'LayoutDefault',
   data () {
     return {
       name: '',
-      back: '/users/ID',
-      title: 'Cadastro de Usuario'
+      back: '/users/' + JSON.parse(window.localStorage.getItem('appDefault')).id,
+      nameSelect: '',
+      select: '',
+      items: [],
+      title: 'Cadastrar Usuário'
     }
+  },
+
+  beforeMount () {
+    this.items = JSON.parse(window.localStorage.getItem('profiles'))
   },
 
   components: {
@@ -47,7 +54,8 @@ export default {
     QCardTitle,
     QCardMain,
     QCardSeparator,
-    QToolbar
+    QToolbar,
+    QSelect
   },
   methods: {
     openURL,
@@ -58,11 +66,10 @@ export default {
         if (!this.users) {
           this.users = []
         }
-        this.item = {id: this.users.length + 1, name: this.name}
+        this.item = {id: this.users.length + 1, name: this.name, app: JSON.parse(window.localStorage.getItem('appDefault')).id}
         this.users.push(this.item)
-        console.log(this.users)
         window.localStorage.setItem('users', JSON.stringify(this.users))
-        window.location.href = this.back
+        // window.location.href = this.back
       }
     }
   }
