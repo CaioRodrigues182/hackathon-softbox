@@ -1,8 +1,8 @@
 {
   "name": "universo11",
   "version": "1.0.0",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "Universo XI",
+  "productName": "Universo XI",
   "cordovaId": "org.cordova.quasar.app",
   "author": "Caio <caio.rod18@gmail.com>",
   "private": true,

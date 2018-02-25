@@ -16,16 +16,13 @@
         <q-card-separator />
         <q-card-main>
         <q-field icon="face">
-          <q-input v-model="email" float-label="Nome da aplicação" />
+          <q-input v-model="name" float-label="Nome" />
         </q-field>
-        <br>
         <q-field icon="textsms">
-          <q-input v-model="email" float-label="Descrição da aplicação"/>
+          <q-input v-model="description" float-label="Descrição" />
         </q-field>
         </q-card-main>
-        <router-link to="permissions">
-          <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" />
-        </router-link>
+        <q-btn color="primary" size="lg" label="CADASTRAR" class="q-btn full-width bg-primary text-white button" />
       </q-card>
       </div>
     </q-layout>
@@ -38,8 +35,9 @@ export default {
   name: 'LayoutDefault',
   data () {
     return {
-      email: '',
-      title: 'Cadastro de Aplicações'
+      name: '',
+      description: '',
+      title: 'Cadastrar Aplicação'
     }
   },
 

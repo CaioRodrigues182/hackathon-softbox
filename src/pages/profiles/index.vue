@@ -5,12 +5,9 @@
           <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
       </router-link>
       <q-toolbar-title><strong>{{ app }} | {{ title }}</strong></q-toolbar-title>
-      <router-link to="/">
-        <q-btn flat round dense icon="power_settings_new" color="white" />
-      </router-link>
     </q-toolbar>
 
- <q-modal v-model="positionModal" :position="position" :content-css="{padding: '20px'}">
+    <q-modal v-model="positionModal" :position="position" :content-css="{padding: '20px'}">
       <div class="q-display-1 q-mb-md">Modal</div><p>This one gets displayed from {{ position }}.</p>
       <q-btn color="orange" @click="positionModal = false" wait-for-ripple label="Close" />
     </q-modal>

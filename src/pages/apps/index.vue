@@ -9,31 +9,10 @@
     <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <router-link to="/apps/ID">
+          <router-link :to="'/apps/' + item.id" v-for="item in items" v-bind:key="item.id">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
-                <q-item-tile label>CASHLINK</q-item-tile>
-              </q-item-main>
-            </q-item>
-          </router-link>
-          <router-link to="apps/ID">
-            <q-item class="padding-v-30 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>INDÚSTRA</q-item-tile>
-              </q-item-main>
-            </q-item>
-          </router-link>
-          <router-link to="apps/ID">
-            <q-item class="padding-v-30 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>SOU24H</q-item-tile>
-              </q-item-main>
-            </q-item>
-          </router-link>
-          <router-link to="apps/ID">
-            <q-item class="padding-v-30 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>TOBIAS</q-item-tile>
+                <q-item-tile label>{{ item.name }}</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
@@ -54,10 +33,10 @@ export default {
   data () {
     return {
       leftDrawerOpen: false,
-      title: 'APLICAÇÕES'
+      title: 'APLICAÇÕES',
+      items: JSON.parse(window.localStorage.getItem('apps'))
     }
   },
-
   components: {
     QField, QInput, QCard, QItem, QList, QItemTile, QToolbar
   },
