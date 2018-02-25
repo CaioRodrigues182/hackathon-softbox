@@ -2,20 +2,23 @@
   <q-layout class="q-layout-page row justify-center">
     <q-toolbar color="primary" class="toolbar-height">
       <q-toolbar-title><strong>{{ title }}</strong></q-toolbar-title>
-      <router-link to="/">
+      <router-link :to="back">
         <q-btn flat round dense icon="power_settings_new" color="white" />
       </router-link>
     </q-toolbar>
     <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <router-link :to="'/apps/' + item.id" v-for="item in items" v-bind:key="item.id">
-            <q-item class="padding-v-30 cursor-pointer">
-              <q-item-main class="text-center">
-                <q-item-tile label>{{ item.name }}</q-item-tile>
-              </q-item-main>
+            <q-item class="padding-v-15 cursor-pointer" v-for="item in items" v-bind:key="item.id">
+              <q-item-main :label="item.name" />
+              <q-item-side right>
+                <router-link :to="'/apps/' + item.id">
+                  <q-btn flat round dense icon="view_stream" text-color="black" />
+                </router-link>
+                <q-btn flat round dense icon="create" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" @click="remove(item.id)" />
+              </q-item-side>
             </q-item>
-          </router-link>
         </q-list>
       </q-card>
     </div>
@@ -32,16 +35,32 @@ export default {
   name: 'apps.index',
   data () {
     return {
+      back: '/',
       leftDrawerOpen: false,
       title: 'APLICAÇÕES',
-      items: JSON.parse(window.localStorage.getItem('apps'))
+      items: JSON.parse(window.localStorage.getItem('apps')),
+      apps: [],
+      item: {}
     }
   },
   components: {
     QField, QInput, QCard, QItem, QList, QItemTile, QToolbar
   },
   methods: {
-    openURL
+    openURL,
+    remove (id) {
+      this.apps = JSON.parse(window.localStorage.getItem('apps'))
+      console.log(this.apps)
+      for (let i = 0; i < this.apps.length; i++) {
+        if (this.apps[i].id === id) {
+          this.apps.splice(i, 1)
+        }
+      }
+      console.log('---')
+      console.log(this.apps)
+      window.localStorage.setItem('apps', JSON.stringify(this.apps))
+      // window.location.href = this.back
+    }
   }
 }
 </script>
