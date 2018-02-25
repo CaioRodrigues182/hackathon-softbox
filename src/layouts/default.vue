@@ -55,8 +55,10 @@ export default {
 </script>
 
 <style>
-.card-style {
-  width: 20vw;
+@media only screen and (max-width: 500px) {
+    .form .card {
+      width: 300px
+    }
 }
 
 </style>

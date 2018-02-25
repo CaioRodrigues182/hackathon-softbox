@@ -86,6 +86,10 @@ export default {
   }
 }
 </script>
-
 <style>
+@media only screen and (max-width: 500px) {
+    .options .content {
+      width: 300px
+    }
+}
 </style>
