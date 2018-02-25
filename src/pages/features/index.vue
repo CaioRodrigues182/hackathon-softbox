@@ -36,10 +36,9 @@
 import { openURL, QField, QInput, QCard, QModal, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: 'features.index',
+  name: 'featuresindex',
   data () {
     return {
-      leftDrawerOpen: false,
       title: 'FUNCIONALIDADES',
       app: 'CASHLINK',
       excluirModal: null,

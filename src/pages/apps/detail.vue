@@ -9,21 +9,21 @@
     <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <router-link to="/features/ID">
+          <router-link :to="'/features/' + id">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>FUNCIONALIDADES</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="/profiles/ID">
+          <router-link :to="'/features/' + id">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>PERFIS</q-item-tile>
               </q-item-main>
             </q-item>
           </router-link>
-          <router-link to="/users/ID">
+          <router-link :to="'/features/' + id">
             <q-item class="padding-v-30 cursor-pointer">
               <q-item-main class="text-center">
                 <q-item-tile label>USUÁRIOS</q-item-tile>
@@ -40,11 +40,11 @@
 import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
-  name: 'apps.detail',
-  data ($route) {
+  name: 'appsdetail',
+  data () {
     return {
-      title: 'CASHLINK',
-      id: $route.params.id
+      title: '',
+      id: 0
     }
   },
 
@@ -53,6 +53,15 @@ export default {
   },
   methods: {
     openURL
+  },
+  beforeMount () {
+    this.id = this.$route.params.id
+    this.apps = JSON.parse(window.localStorage.getItem('apps'))
+    for (let i = 0; i < this.apps.length; i++) {
+      if (this.apps[i].id === this.id) {
+        this.title = this.apps[i].name
+      }
+    }
   }
 }
 </script>

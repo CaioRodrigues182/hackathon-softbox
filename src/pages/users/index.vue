@@ -42,10 +42,9 @@
 import { openURL, QField, QInput, QCard, QItem, QModal, QItemTile, QList, QPopover, QToggle, QBtn } from 'quasar'
 
 export default {
-  name: 'ListOptions',
+  name: 'usersindex',
   data () {
     return {
-      leftDrawerOpen: false,
       checked: true,
       excluirModal: null,
       title: 'USUÁRIOS',

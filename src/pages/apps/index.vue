@@ -20,7 +20,7 @@
               </q-item-side>
             </q-item>
 
-            <q-item class="padding-v-15 cursor-pointer" v-if="!items.length">
+            <q-item class="padding-v-15 cursor-pointer" v-if="!items || !items.length">
               <q-item-main label="Sem dados cadastrados" />
             </q-item>
 
@@ -46,7 +46,6 @@ export default {
   data () {
     return {
       back: '/',
-      leftDrawerOpen: false,
       excluirModal: null,
       title: 'APLICAÇÕES',
       items: JSON.parse(window.localStorage.getItem('apps')),
@@ -62,7 +61,6 @@ export default {
     openURL,
     remove (id) {
       this.apps = JSON.parse(window.localStorage.getItem('apps'))
-      // this.apps.splice(id, 1)
       for (let i = 0; i < this.apps.length; i++) {
         if (this.apps[i].id === id) {
           this.apps.splice(i, 1)

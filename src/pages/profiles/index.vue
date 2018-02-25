@@ -63,9 +63,9 @@ import { openURL, QField, QInput, QCard, QCardMain, QItem, QItemTile, QList, QPo
 
 export default {
 
+  name: 'profilesindex',
   data () {
     return {
-      leftDrawerOpen: false,
       checked: true,
       title: 'PERFIS',
       items: JSON.parse(window.localStorage.getItem('profiles')),
