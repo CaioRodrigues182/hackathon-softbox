@@ -2,7 +2,7 @@
     <q-layout class="q-layout-page row justify-center">
     <q-toolbar color="primary" class="toolbar-height">
       <router-link to="/apps/ID">
-          <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
+      <q-btn flat round dense icon="keyboard_arrow_left" color="white" />
       </router-link>
       <q-toolbar-title><strong>{{ app }} | {{ title }}</strong></q-toolbar-title>
     </q-toolbar>
@@ -10,44 +10,22 @@
       <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main label="Caio" />
+            <q-item v-for="user in users" v-bind:key="user.id" class="padding-v-15 cursor-pointer">
+              <q-item-main>
+                 <q-item-tile>{{user.name}}</q-item-tile>
+              </q-item-main>
               <q-item-side right>
                 <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao()"/>
               </q-item-side>
             </q-item>
-          </router-link>
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main label="Felipe" />
-              <q-item-side right>
-                <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" />
-              </q-item-side>
-            </q-item>
-          </router-link>
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main label="Stanley" />
-              <q-item-side right>
-                <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" />
-              </q-item-side>
-            </q-item>
-          </router-link>
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main label="Vinícius" />
-              <q-item-side right>
-                <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" />
-              </q-item-side>
-            </q-item>
-          </router-link>
         </q-list>
       </q-card>
+      <q-modal v-model="excluirModal" :content-css="{padding: '50px', minWidth: '50vw'}">
+      <div class="q-display-1 q-mb-md">Você deseja realmente excluir esse perfil?</div>
+      <q-btn color="green" @click="excluirModal = false" wait-for-ripple label="Confirmar" />
+      <q-btn color="red" @click="excluirModal = false" wait-for-ripple label="Cancelar" />
+    </q-modal>
       <router-link to="/users/create">
       <q-btn
         round
@@ -61,7 +39,7 @@
 </template>
 
 <script>
-import { openURL, QField, QInput, QCard, QItem, QList, QPopover, QToggle, QBtn } from 'quasar'
+import { openURL, QField, QInput, QCard, QItem, QModal, QItemTile, QList, QPopover, QToggle, QBtn } from 'quasar'
 
 export default {
   name: 'ListOptions',
@@ -69,16 +47,27 @@ export default {
     return {
       leftDrawerOpen: false,
       checked: true,
+      excluirModal: null,
       title: 'USUÁRIOS',
-      app: 'CASHLINK'
+      app: 'CASHLINK',
+      users: [
+        {id: 1, name: 'Caio'},
+        {id: 2, name: 'Stanley'},
+        {id: 3, name: 'Vinicius'},
+        {id: 4, name: 'Felipe'}
+      ]
     }
   },
 
   components: {
-    QField, QInput, QCard, QItem, QList, QPopover, QToggle, QBtn
+    QField, QInput, QCard, QItem, QList, QPopover, QToggle, QBtn, QItemTile, QModal
   },
   methods: {
-    openURL
+    openURL,
+
+    openModalExclusao () {
+      this.excluirModal = ''
+    }
   }
 }
 </script>

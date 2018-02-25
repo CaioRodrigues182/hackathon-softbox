@@ -9,44 +9,22 @@
     <div class="options text-center">
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main label="CRIAR OI" />
+            <q-item v-for="func in funcs" v-bind:key="func" class="padding-v-15 cursor-pointer">
+               <q-item-main>
+                 <q-item-tile>{{func.name}}</q-item-tile>
+              </q-item-main>
               <q-item-side right>
                 <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" />
+                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao()" />
               </q-item-side>
             </q-item>
-          </router-link>
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main label="EDITAR OI" />
-              <q-item-side right>
-                <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" />
-              </q-item-side>
-            </q-item>
-          </router-link>
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main label="CRIAR FLUXO DE OI" />
-              <q-item-side right>
-                <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" />
-              </q-item-side>
-            </q-item>
-          </router-link>
-          <router-link to="/apps/ID">
-            <q-item class="padding-v-15 cursor-pointer">
-              <q-item-main label="EDITAR FLUXO DE OI" />
-              <q-item-side right>
-                <q-btn flat round dense icon="create" text-color="black" />
-                <q-btn flat round dense icon="delete" text-color="black" />
-              </q-item-side>
-            </q-item>
-          </router-link>
         </q-list>
       </q-card>
+      <q-modal v-model="excluirModal" :content-css="{padding: '50px', minWidth: '50vw'}">
+      <div class="q-display-1 q-mb-md">Você deseja realmente excluir esse perfil?</div>
+      <q-btn color="green" @click="excluirModal = false" wait-for-ripple label="Confirmar" />
+      <q-btn color="red" @click="excluirModal = false" wait-for-ripple label="Cancelar" />
+    </q-modal>
     </div>
     <router-link to="/features/create">
       <q-btn round color="primary" class="fixed" icon="add" style="right: 18px; bottom: 18px"/>
@@ -55,7 +33,7 @@
 </template>
 
 <script>
-import { openURL, QField, QInput, QCard, QItem, QList, QItemTile, QToolbar } from 'quasar'
+import { openURL, QField, QInput, QCard, QModal, QItem, QList, QItemTile, QToolbar } from 'quasar'
 
 export default {
   name: 'features.index',
@@ -63,15 +41,26 @@ export default {
     return {
       leftDrawerOpen: false,
       title: 'FUNCIONALIDADES',
-      app: 'CASHLINK'
+      app: 'CASHLINK',
+      excluirModal: null,
+      funcs: [
+        {id: 1, name: 'Criar OI'},
+        {id: 2, name: 'Editar OI'},
+        {id: 3, name: 'Criar fluxo de OI'},
+        {id: 4, name: 'Editar fluxo de OI'}
+      ]
     }
   },
 
   components: {
-    QField, QInput, QCard, QItem, QList, QItemTile, QToolbar
+    QField, QInput, QCard, QItem, QModal, QList, QItemTile, QToolbar
   },
   methods: {
-    openURL
+    openURL,
+
+    openModalExclusao () {
+      this.excluirModal = ''
+    }
   }
 }
 </script>
