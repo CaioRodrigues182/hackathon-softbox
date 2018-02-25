@@ -1,4 +1,4 @@
-<template>
+<template refs="profiles">
     <q-layout class="q-layout-page row justify-center">
     <q-toolbar color="primary" class="toolbar-height">
       <router-link to="/apps/ID">
@@ -27,7 +27,7 @@
 
     <q-modal v-model="excluirModal" :content-css="{padding: '50px', minWidth: '50vw'}">
       <div class="q-display-1 q-mb-md">Você deseja realmente excluir esse perfil?</div>
-      <q-btn color="green" @click="excluirModal = false" wait-for-ripple label="Confirmar" />
+      <q-btn color="green" @click="remove(idToDelete)" wait-for-ripple label="Confirmar" />
       <q-btn color="red" @click="excluirModal = false" wait-for-ripple label="Cancelar" />
     </q-modal>
 
@@ -35,13 +35,13 @@
       <div class="full-width main-title text-center padding-v-30"><strong>{{title}}</strong></div>
       <q-card inline class="content row bigger q-ma-sm text-center">
         <q-list class="q-list q-list-separator q-list-highlight">
-            <q-item v-for="perfil in perfis" v-bind:key="perfil.id" class="padding-v-15 cursor-pointer">
+            <q-item v-for="perfil in items" v-bind:key="perfil.id" class="padding-v-15 cursor-pointer">
               <q-item-main>
                  <q-item-tile>{{perfil.name}}</q-item-tile>
               </q-item-main>
               <q-item-side right>
                 <q-btn flat round dense icon="create" text-color="black" @click="openModalPermissao()" />
-                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao()" />
+                <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao(perfil.id)" />
               </q-item-side>
             </q-item>
         </q-list>
@@ -68,8 +68,10 @@ export default {
       leftDrawerOpen: false,
       checked: true,
       title: 'PERFIS',
+      items: JSON.parse(window.localStorage.getItem('profiles')),
       app: 'CASHLINK',
       opened: false,
+      idToDelete: -1,
       permisoesModal: null,
       excluirModal: null,
       itens: [
@@ -77,12 +79,6 @@ export default {
         {id: 2, name: 'Editar', checked: true},
         {id: 3, name: 'Salvar', checked: false},
         {id: 4, name: 'Excluir', checked: true}
-      ],
-      perfis: [
-        {id: 1, name: 'Administrador'},
-        {id: 2, name: 'Gerente'},
-        {id: 3, name: 'Recepcionista'},
-        {id: 4, name: 'Cliente'}
       ]
     }
   },
@@ -93,10 +89,24 @@ export default {
   methods: {
     openURL,
 
+    remove (id) {
+      this.profiles = JSON.parse(window.localStorage.getItem('profiles'))
+      // this.apps.splice(id, 1)
+      for (let i = 0; i < this.profiles.length; i++) {
+        if (this.profiles[i].id === id) {
+          this.profiles.splice(i, 1)
+        }
+      }
+      window.localStorage.setItem('profiles', JSON.stringify(this.profiles))
+      this.items = this.profiles
+      this.excluirModal = false
+    },
+
     openModalPermissao () {
       this.permisoesModal = ''
     },
-    openModalExclusao () {
+    openModalExclusao (id) {
+      this.idToDelete = id
       this.excluirModal = ''
     }
   }
