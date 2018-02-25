@@ -53,13 +53,17 @@ export default {
     openURL,
 
     create () {
-      debugger
-      this.profiles = JSON.parse(window.localStorage.getItem('profiles'))
-      this.item = {id: this.profiles.length + 1, name: this.name}
-      this.profiles.push(this.item)
-      console.log(this.profiles)
-      window.localStorage.setItem('profiles', JSON.stringify(this.profiles))
-      window.location.href = this.back
+      if (this.name && this.name !== '') {
+        this.profiles = JSON.parse(window.localStorage.getItem('profiles'))
+        if (!this.profiles) {
+          this.profiles = []
+        }
+        this.item = {id: this.profiles.length + 1, name: this.name}
+        this.profiles.push(this.item)
+        console.log(this.profiles)
+        window.localStorage.setItem('profiles', JSON.stringify(this.profiles))
+        window.location.href = this.back
+      }
     }
   }
 }

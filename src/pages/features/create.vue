@@ -53,7 +53,6 @@ export default {
     openURL,
 
     create () {
-      debugger
       if (this.name && this.name !== '') {
         this.funcionalidades = JSON.parse(window.localStorage.getItem('funcionalidades'))
         if (!this.funcionalidades) {
