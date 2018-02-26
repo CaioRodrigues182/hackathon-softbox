@@ -12,7 +12,9 @@
             <q-item class="padding-v-15 cursor-pointer" v-for="item in items" v-bind:key="item.id">
               <q-item-main :label="item.name" />
               <q-item-side right>
-                <q-btn flat round dense icon="view_stream" text-color="black" @click="setAppDefault(item.id)" />
+                <router-link :to="go + item.id">
+                  <q-btn flat round dense icon="view_stream" text-color="black" @click="setAppDefault(item.id)" />
+                </router-link>
                 <q-btn flat round dense icon="create" text-color="black" />
                 <q-btn flat round dense icon="delete" text-color="black" @click="openModalExclusao(item.id)" />
               </q-item-side>
